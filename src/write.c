@@ -3160,6 +3160,7 @@ static avifResult avifRWStreamWriteProperties(avifItemPropertyDedup * const dedu
 
 avifResult avifEncoderFinish(avifEncoder * encoder, avifRWData * output)
 {
+    printf("Running avifEncoderFinish");
     avifDiagnosticsClearError(&encoder->diag);
     if (encoder->data->items.count == 0) {
         return AVIF_RESULT_NO_CONTENT;
@@ -3172,8 +3173,9 @@ avifResult avifEncoderFinish(avifEncoder * encoder, avifRWData * output)
 
     // -----------------------------------------------------------------------
     // Finish up encoding
-
+    printf("Number of items: %d", encoder->data->items.count);
     for (uint32_t itemIndex = 0; itemIndex < encoder->data->items.count; ++itemIndex) {
+        printf("Finishing item %d", itemIndex + 1);
         avifEncoderItem * item = &encoder->data->items.item[itemIndex];
         if (item->codec) {
             if (!item->codec->encodeFinish(item->codec, item->encodeOutput)) {
