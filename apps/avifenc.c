@@ -971,6 +971,7 @@ static avifBool avifEncodeRestOfImageSequence(avifEncoder * encoder,
                                               int imageIndex,
                                               const avifImage * firstImage)
 {
+    printf("avifEncodeRestOfImageSequence\n");
     avifBool success = AVIF_FALSE;
     avifImage * nextImage = NULL;
     const avifInputFileSettings * nextSettings = NULL;
@@ -1164,6 +1165,7 @@ static avifBool avifEncodeImagesFixedQuality(const avifSettings * settings,
                                              avifRWData * encoded,
                                              avifEncodedByteSizes * byteSizes)
 {
+    printf("avifEncodeImagesFixedQuality\n");
     avifBool success = AVIF_FALSE;
     avifRWDataFree(encoded);
     avifEncoder * encoder = avifEncoderCreate();
